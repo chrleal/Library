@@ -10,16 +10,18 @@ html{
 body {
     display: grid;
     grid-template: 1fr 5fr;
-    background-color: blue;
+    background-color: #e0e0e0;
 }
 
 .header {
     padding: 20px 200px;
     display: flex;
-    background-color: aqua;
+    background-color: #212121;
+    color: white;
     /* padding: 0 150px; */
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25);;
 }
 
 form {
@@ -33,10 +35,10 @@ form {
     left: 50%;
     margin-top: -250px;
     margin-left: -150px;
-    background-color: blueviolet;
-}
-
-.main {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    align-items: center;
+    gap: 10px;
 }
 
 .cardContainer {
@@ -59,9 +61,15 @@ form {
     padding: 30px 20px 20px 20px;
 }
 
-/* input{
-    width: 200px;
-    height: 100px;
+.add {
+    padding: 6px 20px;
+    font-size: 18px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
     background-color: white;
-    z-index: 1;
-} */
+}
+
+.add:hover {
+    background-color: rgb(201, 201, 201);
+}

@@ -4,8 +4,6 @@ const cardContainer = document.querySelector('.cardContainer');
 let id = 0;
 let myLibrary = [];
 
-displayBook();
-
 addBook.addEventListener('click', () => {
     const form = document.createElement('form');
     form.setAttribute("target", "dummyframe");
@@ -69,9 +67,14 @@ function Book(title, author, pages, read, id) {
 
 function addBookToLibrary(newBook) {
     myLibrary.push(newBook);
+    displayBook();
 }
 
 function displayBook() {
+    const removeCard = cardContainer.querySelectorAll('.card');
+    removeCard.forEach((card) => {
+        card.remove();
+    })
     myLibrary.forEach((book) => {
         const card = document.createElement('div');
         card.setAttribute('class', 'card');
@@ -85,6 +88,7 @@ function displayBook() {
         const deleteCard = document.createElement('button')
         deleteCard.classList.add('deleteBtn')
         deleteCard.textContent = "Delete";
+        deleteCard.addEventListener('click', deleteBook);
         card.appendChild(titleCard);
         card.appendChild(authorCard);
         card.appendChild(pagesCard);
@@ -98,18 +102,12 @@ function displayBook() {
     })
 }
 
-// function deleteBook() {
-//     const classTitle = document.querySelector('.titleCard');
-//     const deleteBtn = document.querySelector('.deleteBtn');
-//     deleteBtn.addEventListener('click', () => {
-
-//     myLibrary.forEach((book) => {
-//         if (book.title == classTitle.textContent) {
-//             console.log(book.id);
-//             const delCard = document.querySelector('.card');
-//             delCard.parentNode.removeChild(delCard);
-//             myLibrary.splice(book, 1);
-//         }
-//     })
-//     })
-// }
+function deleteBook() {
+    const classTitle = document.querySelector('.titleCard');
+    myLibrary.forEach((book) => {
+        if (book.title == classTitle.textContent) {;
+            myLibrary.splice(book, 1);
+        }
+    })
+    displayBook();
+}

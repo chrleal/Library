@@ -14,7 +14,7 @@ body {
 }
 
 .header {
-    padding: 20px 50px;
+    padding: 20px 200px;
     display: flex;
     background-color: aqua;
     /* padding: 0 150px; */
@@ -40,18 +40,18 @@ form {
 }
 
 .cardContainer {
-    margin: 20px 50px;
+    margin: 20px 200px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
-    grid-auto-rows:auto;
+    grid-auto-rows: auto;
     background-color: gray;
 }
 
 .card {
     border-left: 10px solid black;
     width: auto;
-    height: 350px;
+    height: 200px;
     border-radius: 10px;
     background-color: white;
     display: flex;

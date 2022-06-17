@@ -3,6 +3,7 @@ const addBook = document.querySelector('.add');
 const cardContainer = document.querySelector('.cardContainer');
 let myLibrary = [];
 
+// Creates the form
 addBook.addEventListener('click', () => {
     const form = document.createElement('form');
     form.setAttribute("target", "dummyframe");
@@ -47,15 +48,25 @@ addBook.addEventListener('click', () => {
     submit.setAttribute('class', 'submit')
     submit.textContent = "Submit";
     form.appendChild(submit);
+
+    //Adds an overlay when the form is displayed
+    const overlay = document.querySelector(".overlay");
+    overlay.style.display = "block";
+    overlay.addEventListener('click', () => {
+        overlay.style.display = "none";
+        document.body.removeChild(form);
+    });
+
+    //Adds a card to the screen when the submit button is clicked
     submit.addEventListener('click', () => {
         if (title.value != "" && author.value != "" && pages.value != "") {
             const newBook = new Book(title.value, author.value, pages.value, read);
             addBookToLibrary(newBook);
             document.body.removeChild(form);
+            overlay.style.display = "none"
         }
-    })    
+    })   
 });
-
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -63,6 +74,8 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.id = Math.floor(Math.random() * 1000)
     if (read.checked) {
+        this.read = "Read";
+    } else if (read == "read") {
         this.read = "Read";
     } else {
         this.read = "Not read yet";
@@ -79,15 +92,19 @@ function displayBook() {
     removeCard.forEach((card) => {
         card.remove();
     })
-    myLibrary.forEach((book, index) => {
+    myLibrary.forEach((book) => {
         const card = document.createElement('div');
         card.setAttribute('class', 'card');
-        card.setAttribute('data-id', `${index}`)
+        // card.setAttribute('data-id', `${index}`)
         cardContainer.appendChild(card);
         const deleteCard = document.createElement('button')
         deleteCard.classList.add('deleteBtn')
         deleteCard.textContent = "X";
-        deleteCard.addEventListener('click', deleteBook);
+        deleteCard.addEventListener('click', () => {
+            console.log(book)
+            myLibrary.splice(myLibrary.indexOf(book), 1);
+            cardContainer.removeChild(card);
+        });
         card.appendChild(deleteCard);
         cardContent = document.createElement('div');
         cardContent.setAttribute('class', 'cardContent');
@@ -108,12 +125,14 @@ function displayBook() {
     })
 }
 
-function deleteBook() {
-    const cardId = document.querySelector('.card');
-    myLibrary.forEach((book) => {
-        if (cardId.dataset.id === myLibrary.indexOf(book)){  
-        myLibrary.splice(cardId.dataset.id, 1);
-        }
-    })
-    displayBook();
-}
+const book1 = new Book('The Lord of The Rings: The Fellowship of the Ring', 'J. R. R. Tolkien', 576, 'read')
+addBookToLibrary(book1)
+
+const book2 = new Book('1984', 'George Orwell', 416, 'read')
+addBookToLibrary(book2)
+
+const book3 = new Book('Brave New World', 'Aldous Huxley', 259, 'read')
+addBookToLibrary(book3)
+
+const book4 = new Book('On The Shortness of Life', 'Seneca', 112, 'read')
+addBookToLibrary(book4)

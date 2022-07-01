@@ -156,3 +156,14 @@ form h1{
     background-color: rgba(0,0,0,0.5);
     z-index: 1; 
 }
+
+.readBtn {
+    padding: 5px 61px;
+    max-width: 168.95px;
+    max-height: 33px;
+    font-size: 20px;
+    border: 1px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px -3px rgba(0, 0, 0, 0.25);
+}

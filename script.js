@@ -78,12 +78,11 @@ addBook.addEventListener('click', () => {
 });
 
 class Book {
-    constructor(title, author, pages, read, color) {
+    constructor(title, author, pages, read) {
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.id = Math.floor(Math.random() * 1000);
-        this.color = color;
         if (read.checked) {
             this.read = "Read";
         } else if (read == "read") {

@@ -27,6 +27,20 @@ body {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25);
 }
 
+.add {
+    padding: 6px 20px;
+    font-size: 16px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+.add:hover {
+    background-color: rgb(201, 201, 201);
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -80,20 +94,6 @@ form {
     padding: 0;
     margin: 0;
     font-size: 22px;
-}
-
-.add {
-    padding: 6px 20px;
-    font-size: 16px;
-    border-radius: 15px;
-    border: none;
-    cursor: pointer;
-    background-color: white;
-    font-family: 'Roboto', sans-serif;
-}
-
-.add:hover {
-    background-color: rgb(201, 201, 201);
 }
 
 .divInput {
